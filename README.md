@@ -20,7 +20,7 @@ $: irb
 
 irb> require 'path/to/repo/lib/issue_migrator.rb'
 irb> im = IssueMigrator.new("username", "password", "owner/source_repo", "owner/target_repo")
-irb> im.pull_issues
+irb> im.pull_source_issues
   => [{...}]
   
 irb> im.push_issues
