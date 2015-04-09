@@ -3,7 +3,7 @@ A simple, interactive Ruby class that helps you migrate issues from one reposito
 
 Sometimes, the structure of your project changes so drastically that it would break your repository.
 You need an easy way to start from scratch and just commit everything to a new repository.
-But, you've got all these valuable issues in the repository on Github.
+But, you've got all these valuable issues in the old repository on Github.
 
 You need an easy way to migrate those.
 
