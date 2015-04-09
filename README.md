@@ -12,7 +12,8 @@ interactively migrate your issues from one repository you have permissions on, t
 
 Try it out:
 
-```$: git clone https://github.com/trbritt/github-issue-migrate.git
+```
+$: git clone https://github.com/trbritt/github-issue-migrate.git
 $: cd github-issue-migrate && bundle install
 
 $: irb
@@ -23,7 +24,6 @@ irb> im.pull_issues
   => [{...}]
   
 irb> im.push_issues
-
 ```
 
 This will migrate issues, their labels, and their comments, in order from the source to the target. Done!
