@@ -39,11 +39,12 @@ class IssueMigrator
     source_comments.each do |cmt|
       comments << cmt.body
     end
+    comments
   end
 
   def push_comments(target_issue, source_comments)
     source_comments.each do |cmt|
-      @client.add_comment(@target_repo, target_issue.number, cmt.body)
+      @client.add_comment(@target_repo, target_issue.number, cmt)
     end
   end
 end
