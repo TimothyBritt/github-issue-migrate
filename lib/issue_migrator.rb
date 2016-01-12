@@ -12,7 +12,7 @@ class IssueMigrator
 
   def pull_source_issues
     @client.auto_paginate = true
-    @issues = @client.issues @source_repo
+    @issues = @client.issues(@source_repo, {:state => 'all'})
   end
 
   def push_issues
@@ -20,8 +20,11 @@ class IssueMigrator
     @issues.each do |source_issue|
       source_labels = get_source_labels(source_issue)
       source_comments = get_source_comments(source_issue)
-      target_issue = @client.create_issue(@target_repo, source_issue.title, source_issue.body, {labels: source_labels})
-      push_comments(target_issue, source_comments) unless source_comments.empty?
+      if !source_issue.key?(:pull_request) || source_issue.pull_request.empty?
+        target_issue = @client.create_issue(@target_repo, source_issue.title, source_issue.body, {labels: source_labels})
+        push_comments(target_issue, source_comments) unless source_comments.empty?
+        @client.close_issue(@target_repo, target_issue.number) if source_issue.state === 'closed'
+      end
     end
   end
 
